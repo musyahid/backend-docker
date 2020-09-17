@@ -1,139 +1,30 @@
-# Backend Simple WMS
+# Menggunakan Docker Compose
 
-## Mockups Design: [FIGMA](https://www.figma.com/file/xZU0wwbhsbLdGLpCO6QFCP/Vuex?node-id=19%3A48)
+Pada kenyataannya mungkin kita mempunyai banyak container yang harus kita integrasikan. Jika kita membuat satu - satu seperti membuat image, container dan network satu persatu tentunya akan memakan waktu dan tenaga yang banyak. Pada docker ada suatu fitur yang disebut dengan docker compose. Yang memungkinkan kita membuat container, image dan network dalam satu file. Nantinya hanya perlu menjalankan satu perintah untuk otomatis menjalankan semuanya
 
-## Api Documentation
+    - Buat sebuah file dengan nama docker-compose.yml (default name)
+    - Didalam file docker-compose.yml, Buat version dari docker-compose
+    - Selanjutnya. Buat container - container dan set pada atribut services
 
--
--
--
+![Create Version](./asset/img/create-version.png)
+        
+    - Berikut merupakan container - container yang dibutuhkan
 
-### Sign Up
+    - Kemudian pada container mysql dan phpmyadmin, ambil masing - masing image yang sudah disediakan dari docker hub
+    - Isikan port mysql dan phpmyadmin dan isikan environment seperti root password DLL
 
-![SIGN UP](./asset/img/signup.jpeg)
+    - Pada container node-app ada yang disebut dengan atribut depends_on. Artinya container ini membutuhkan container lain untuk jalan. Karena container node-app ini membutuhkan mysql, maka depends_on kita masukkan mysql
 
-### Login
+    - Pada docker-compose juga dapat membuat network.
 
-![LOGIN](./asset/img/login.jpeg)
+    - Setelah network dibuat, Kemudian set setiap container dengan menambahkan atribut networks dan isikan dengan nama network yang telah dibuat agar container - container tersebut dapat terhubung
 
--
--
--
+    - Kemudian jalankan docker-compose untuk melihat perintah apa saja yang dapat digunakan
 
-# GET
+    - Disini perintah yang akan kita gunakan untuk menjalankan sekaligus membuat containernya dalah "docker-compose up"
+    - Kemudian untuk melakukan stop dan mengapus container, network, images dan volume kita dapat menggunakan "docker-compose down"
+    - Jika hanya ingin melakukan stop dan tidak menghapus container yang sudah dibuat, kita cukup menggunakan perintah "docker-compose stop"
 
-## Note: Untuk Endpoint dibawah ini, butuh 'token' Authorization dari login
+    - Kemudian jika kita jalankan perintah "dokcer-compose up" dia akan menjalankan dan membuat container
 
--
-
-### Get All Products
-
-![Get All Products](./asset/img/get-all-products.jpeg)
-
-### Get All Products IN
-
-![Get All Products IN](./asset/img/get-all-products-in.jpeg)
-
-### Get All Products OUT
-
-![Get All Products OUT](./asset/img/get-all-products-out.jpeg)
-
-### Get User By id
-
-![Get User By id](./asset/img/get-user-by-id.jpeg)
-
-### Get Products By id
-
-![Get Products By id](./asset/img/get-product-by-id.jpeg)
-
-### Get Products IN By id
-
-![Get Products IN By id](./asset/img/get-product-in-by-id.jpeg)
-
-### Get Products OUT By id
-
-![Get Products OUT By id](./asset/img/get-product-out-by-id.jpeg)
-
--
--
--
-
-# POST
-
-### POST User
-
-![POST User](./asset/img/post-user.jpeg)
-
-### POST Product
-
-![POST Product](./asset/img/post-product.jpeg)
-
-### POST Product IN
-
-![POST Product IN](./asset/img/post-product-in.jpeg)
-
-### POST Product OUT
-
-![POST Product OUT](./asset/img/post-product-out.jpeg)
-
--
--
--
-
-# PUT
-
-### PUT - Update User By Id
-
-![PUT - Update User By Id](./asset/img/put-user-by-id.jpeg)
-
-### PUT - Update Product By Id
-
-![PUT - Update Product By Id](./asset/img/put-product-by-id.jpeg)
-
-### PUT - Update Product IN By Id
-
-![PUT - Update Product IN By Id](./asset/img/put-product-in-by-id.jpeg)
-
-### PUT - Update Product OUT By Id
-
-![PUT - Update Product OUT By Id](./asset/img/put-product-out-by-id.jpeg)
-
--
--
--
-
-# DELETE
-
-### DELETE User By id
-
-![DELETE User By id](./asset/img/delete-user-by-id.jpeg)
-
-### DELETE Product By id
-
-![DELETE Product By id](./asset/img/delete-product-by-id.jpeg)
-
-### DELETE Product IN By id
-
-![DELETE Product IN By id](./asset/img/delete-product-in-by-id.jpeg)
-
-### DELETE Product OUT By id
-
-![DELETE Product OUT By id](./asset/img/delete-product-out-by-id.jpeg)
-
--
--
--
-
-# HIT Endpoint for Download
-
-### Download Laporan Product IN
-
-![Download Laporan Product IN](./asset/img/laporan-product-in.jpeg)
-
-### Download Laporan Product OUT
-
-![Download Laporan Product OUT](./asset/img/laporan-product-out.jpeg)
-
-### Download Laporan Product ALL
-
-![Download Laporan Product ALL](./asset/img/laporan-product-all.jpeg)
+    - Kemudian jika kita jalankan perintah "dokcer-compose stop" dia akan menstop  container
