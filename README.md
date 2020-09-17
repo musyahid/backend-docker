@@ -37,4 +37,5 @@ Pada kenyataannya mungkin kita mempunyai banyak container yang harus kita integr
 - Kemudian jika kita jalankan perintah "dokcer-compose up" dia akan menjalankan dan membuat container
 ![Create Version](./asset/img/compose-up.png)
 - Kemudian jika kita jalankan perintah "dokcer-compose stop" dia akan menstop  container
-![Create Version](./asset/img/compoase-stop.png)
+![Create Version](./asset/img/compose-stop.png)
+- SELESAI. Terima Kasih
